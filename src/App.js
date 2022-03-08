@@ -1,10 +1,16 @@
 import React from "react";
-import MyRoutes from './Routes';
-import './App.css';
+import MyRoutes from "./Routes";
+import Drawer from "./components/Drawer";
+import "./App.css";
 
 function App() {
   return (
-    <MyRoutes />
+    <>
+      <div style={{ display: "flex" }}>
+        <Drawer />
+        <MyRoutes />
+      </div>
+    </>
   );
 }
 
