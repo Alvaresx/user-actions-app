@@ -5,7 +5,7 @@ function ListaUsuarios() {
   return (
     <Box
       sx={{
-        backgroundColor: "green",
+        backgroundColor: "#f8fafc",
         width: "100%",
         height: "100vh",
         display: "flex",
@@ -13,7 +13,7 @@ function ListaUsuarios() {
         justifyContent: "center",
       }}
     >
-      <div style={{ backgroundColor: "white" }}>oi</div>
+      <div style={{ backgroundColor: "white" }}>Lista de usuários</div>
     </Box>
   );
 }

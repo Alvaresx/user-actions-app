@@ -5,7 +5,7 @@ function Logs() {
   return (
     <Box
       sx={{
-        backgroundColor: "blue",
+        backgroundColor: "#f8fafc",
         width: "100%",
         height: "100vh",
         display: "flex",
@@ -13,7 +13,7 @@ function Logs() {
         justifyContent: "center",
       }}
     >
-      <div style={{ backgroundColor: "white" }}>oi</div>
+      <div style={{ backgroundColor: "white" }}>Logs</div>
     </Box>
   );
 }

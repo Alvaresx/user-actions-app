@@ -6,6 +6,8 @@ import {
   List,
   ListItemIcon,
   ListItemText,
+  Grid,
+  Typography,
 } from "@mui/material";
 import {
   PersonAddAlt1,
@@ -41,10 +43,32 @@ function Drawer() {
           "& .MuiDrawer-paper": {
             width: "250px",
             boxSizing: "border-box",
+            backgroundColor: "#ebe3d5",
           },
         }}
         open={true}
       >
+        <Grid
+          container
+          sx={{
+            height: "50px",
+            backgroundColor: "#9E917B",
+            alignItems: "center",
+          }}
+        >
+          <Grid item lg={12}>
+            <Typography
+              sx={{
+                color: "#ddd",
+                fontWeight: "100",
+                marginLeft: "20px",
+                fontSize: "large",
+              }}
+            >
+              Usuários
+            </Typography>
+          </Grid>
+        </Grid>
         <List>
           {itemsList.map((item) => (
             <Link
