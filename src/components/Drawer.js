@@ -43,7 +43,7 @@ function Drawer() {
           "& .MuiDrawer-paper": {
             width: "250px",
             boxSizing: "border-box",
-            backgroundColor: "#ebe3d5",
+            backgroundColor: "#fff",
           },
         }}
         open={true}
@@ -52,7 +52,7 @@ function Drawer() {
           container
           sx={{
             height: "50px",
-            backgroundColor: "#9E917B",
+            backgroundColor: "#1976d2",
             alignItems: "center",
           }}
         >

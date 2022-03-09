@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   TableContainer,
@@ -7,11 +7,33 @@ import {
   TableRow,
   TableCell,
   TableBody,
+  TableFooter,
+  TablePagination,
   Paper,
+  IconButton,
+  Tooltip,
 } from "@mui/material";
+import { Delete, Sms } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 function ListaUsuarios() {
-  const rows = []
+  const [rows, setRows] = useState([]);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+
+  useEffect(() => {
+    let getDataStorage = JSON.parse(localStorage.getItem("users"));
+    setRows(getDataStorage);
+  }, []);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
 
   return (
     <Box
@@ -24,7 +46,7 @@ function ListaUsuarios() {
         justifyContent: "center",
       }}
     >
-      <TableContainer component={Paper} sx={{maxWidth: "70%"}}>
+      <TableContainer component={Paper} sx={{ maxWidth: "70%" }}>
         <Table size="small" aria-label="a dense table">
           <TableHead>
             <TableRow>
@@ -35,18 +57,51 @@ function ListaUsuarios() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
+            {(rowsPerPage > 0
+              ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              : rows
+            ).map((row) => (
               <TableRow
-                key={row.name}
+                key={row.nome}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableCell align="center">{row.calories}</TableCell>
-                <TableCell align="center">{row.fat}</TableCell>
-                <TableCell align="center">{row.carbs}</TableCell>
-                <TableCell align="center">{row.carbs}</TableCell>
+                <TableCell align="center">{row.nome}</TableCell>
+                <TableCell align="center">{row.cpf}</TableCell>
+                <TableCell align="center">{row.telefone}</TableCell>
+                <TableCell align="center">
+                  <Tooltip title="Excluir" placement="left">
+                    <IconButton>
+                      <Delete />
+                    </IconButton>
+                  </Tooltip>
+                  {/* <Tooltip title="Enviar SMS" placement="right">
+                    <Link to="/envioSMS" state={{ nome: row.nome, telefone: row.telefone }}>
+                      <IconButton>
+                        <Sms />
+                      </IconButton>
+                    </Link>
+                  </Tooltip> */}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
+          <TableFooter>
+            <TableRow>
+              <TablePagination
+                rowsPerPageOptions={[5, 10, 25, { label: "Todas", value: -1 }]}
+                colSpan={4}
+                count={rows.length}
+                rowsPerPage={rowsPerPage}
+                page={page}
+                labelRowsPerPage="Linhas por página:"
+                labelDisplayedRows={({ from, to, count }) =>
+                  `${from}-${to} de ${count}`
+                }
+                onPageChange={handleChangePage}
+                onRowsPerPageChange={handleChangeRowsPerPage}
+              />
+            </TableRow>
+          </TableFooter>
         </Table>
       </TableContainer>
     </Box>

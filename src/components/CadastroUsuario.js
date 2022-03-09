@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import { Box, Paper, Grid, TextField, Button, Typography } from "@mui/material";
+import { useSnackbar } from "notistack";
+import { dataAtualFormatada } from "../utils/DataFormatada";
 
 function CadastroUsuario() {
+  const { enqueueSnackbar } = useSnackbar();
   const [nome, setNome] = useState("");
   const [cpf, setCpf] = useState("");
   const [telefone, setTelefone] = useState("");
+  const [dataStorage, setDataStorage] = useState([]);
+  const [dataLogStorage, setDataLogStorage] = useState([]);
 
   const handleChangeNome = (e) => {
     setNome(e);
@@ -19,8 +24,42 @@ function CadastroUsuario() {
   };
 
   const handleCadastrar = () => {
-    console.log("entrou")
-  }
+    if (localStorage.getItem("users") === null) {
+      dataStorage.push({ nome: nome, cpf: cpf, telefone: telefone });
+      let dataStringfy = JSON.stringify(dataStorage);
+      localStorage.setItem("users", dataStringfy);
+    } else {
+      let getDataStorage = JSON.parse(localStorage.getItem("users"));
+      getDataStorage.push({ nome: nome, cpf: cpf, telefone: telefone });
+      let dataStringfy = JSON.stringify(getDataStorage);
+      localStorage.setItem("users", dataStringfy);
+    }
+    if (localStorage.getItem("logs") === null) {
+      dataLogStorage.push({
+        acao: `Usuário ${nome} cadastrado.`,
+        data: dataAtualFormatada(),
+      });
+      let dataLogStringfy = JSON.stringify(dataLogStorage);
+      localStorage.setItem("logs", dataLogStringfy);
+    } else {
+      let getDataLogStorage = JSON.parse(localStorage.getItem("logs"));
+      getDataLogStorage.push({
+        acao: `Usuário ${nome} cadastrado.`,
+        data: dataAtualFormatada(),
+      });
+      let dataLogStringfy = JSON.stringify(getDataLogStorage);
+      localStorage.setItem("logs", dataLogStringfy);
+    }
+    enqueueSnackbar("Cadastro realizado com sucesso!", {
+      variant: "success",
+      anchorOrigin: { horizontal: "right", vertical: "top" },
+    });
+    setNome("");
+    setCpf("");
+    setTelefone("");
+    setDataStorage([]);
+    setDataLogStorage([]);
+  };
 
   return (
     <Box
@@ -42,7 +81,7 @@ function CadastroUsuario() {
             </Typography>
           </Grid>
 
-          <Grid item lg={12}>
+          <Grid item lg={12} md={12}>
             <TextField
               label="Nome"
               variant="outlined"
@@ -52,22 +91,22 @@ function CadastroUsuario() {
               required
             />
           </Grid>
-          <Grid item lg={6}>
+          <Grid item lg={6} md={6}>
             <TextField
               label="CPF"
               variant="outlined"
               value={cpf}
-              nChange={(e) => handleChangeCpf(e.target.value)}
+              onChange={(e) => handleChangeCpf(e.target.value)}
               fullWidth
               required
             />
           </Grid>
-          <Grid item lg={6}>
+          <Grid item lg={6} md={6}>
             <TextField
               label="Telefone"
               variant="outlined"
               value={telefone}
-              nChange={(e) => handleChangeTelefone(e.target.value)}
+              onChange={(e) => handleChangeTelefone(e.target.value)}
               fullWidth
               required
             />
@@ -77,13 +116,20 @@ function CadastroUsuario() {
           <Grid
             item
             lg={12}
+            md={12}
             sx={{
               display: "flex",
               justifyContent: "center",
               marginTop: "24px",
             }}
           >
-            <Button variant="contained" onClick={handleCadastrar} sx={{margin: "0 12px"}}>Cadastrar</Button>
+            <Button
+              variant="contained"
+              onClick={handleCadastrar}
+              sx={{ margin: "0 12px" }}
+            >
+              Cadastrar
+            </Button>
           </Grid>
         </Grid>
       </Paper>
