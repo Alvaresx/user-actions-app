@@ -1,7 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Paper, Grid, TextField, Button, Typography } from "@mui/material";
 
 function CadastroUsuario() {
+  const [nome, setNome] = useState("");
+  const [cpf, setCpf] = useState("");
+  const [telefone, setTelefone] = useState("");
+
+  const handleChangeNome = (e) => {
+    setNome(e);
+  };
+
+  const handleChangeCpf = (e) => {
+    setCpf(e);
+  };
+
+  const handleChangeTelefone = (e) => {
+    setTelefone(e);
+  };
+
+  const handleCadastrar = () => {
+    console.log("entrou")
+  }
+
   return (
     <Box
       sx={{
@@ -23,13 +43,34 @@ function CadastroUsuario() {
           </Grid>
 
           <Grid item lg={12}>
-            <TextField label="Nome" variant="outlined" fullWidth required />
+            <TextField
+              label="Nome"
+              variant="outlined"
+              value={nome}
+              onChange={(e) => handleChangeNome(e.target.value)}
+              fullWidth
+              required
+            />
           </Grid>
           <Grid item lg={6}>
-            <TextField label="CPF" variant="outlined" fullWidth required />
+            <TextField
+              label="CPF"
+              variant="outlined"
+              value={cpf}
+              nChange={(e) => handleChangeCpf(e.target.value)}
+              fullWidth
+              required
+            />
           </Grid>
           <Grid item lg={6}>
-            <TextField label="Telefone" variant="outlined" fullWidth required />
+            <TextField
+              label="Telefone"
+              variant="outlined"
+              value={telefone}
+              nChange={(e) => handleChangeTelefone(e.target.value)}
+              fullWidth
+              required
+            />
           </Grid>
         </Grid>
         <Grid container>
@@ -42,7 +83,7 @@ function CadastroUsuario() {
               marginTop: "24px",
             }}
           >
-            <Button variant="contained">Cadastrar</Button>
+            <Button variant="contained" onClick={handleCadastrar} sx={{margin: "0 12px"}}>Cadastrar</Button>
           </Grid>
         </Grid>
       </Paper>
