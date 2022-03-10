@@ -14,9 +14,10 @@ import {
   Tooltip,
 } from "@mui/material";
 import { Delete, Sms } from "@mui/icons-material";
-import { Link } from "react-router-dom";
+import { useSnackbar } from "notistack";
 
 function ListaUsuarios() {
+  const { enqueueSnackbar } = useSnackbar();
   const [rows, setRows] = useState([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -33,6 +34,22 @@ function ListaUsuarios() {
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
+  };
+
+  const handleDeleteUser = (e) => {
+    let getDataStorage = JSON.parse(localStorage.getItem("users"));
+    for (let i = 0; i < getDataStorage.length; i++) {
+      if (getDataStorage[i].cpf === e) {
+        getDataStorage.splice(i, 1);
+      }
+    }
+    setRows(getDataStorage);
+    let dataStringfy = JSON.stringify(getDataStorage);
+    localStorage.setItem("users", dataStringfy);
+    enqueueSnackbar("Usuário excluído com sucesso!", {
+      variant: "success",
+      anchorOrigin: { horizontal: "right", vertical: "top" },
+    });
   };
 
   return (
@@ -70,7 +87,7 @@ function ListaUsuarios() {
                 <TableCell align="center">{row.telefone}</TableCell>
                 <TableCell align="center">
                   <Tooltip title="Excluir" placement="left">
-                    <IconButton>
+                    <IconButton onClick={() => handleDeleteUser(row.cpf)}>
                       <Delete />
                     </IconButton>
                   </Tooltip>
