@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   TableContainer,
@@ -42,7 +42,7 @@ function Logs() {
         justifyContent: "center",
       }}
     >
-      <TableContainer component={Paper} sx={{maxWidth: "70%"}}>
+      <TableContainer component={Paper} sx={{ maxWidth: "70%" }}>
         <Table size="small" aria-label="a dense table">
           <TableHead>
             <TableRow>
@@ -51,7 +51,10 @@ function Logs() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
+            {(rowsPerPage > 0
+              ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              : rows
+            ).map((row) => (
               <TableRow
                 key={row.data}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}

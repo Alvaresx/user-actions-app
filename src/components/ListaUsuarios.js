@@ -15,12 +15,14 @@ import {
 } from "@mui/material";
 import { Delete, Sms } from "@mui/icons-material";
 import { useSnackbar } from "notistack";
+import { dataAtualFormatada } from "../utils/DataFormatada";
 
 function ListaUsuarios() {
   const { enqueueSnackbar } = useSnackbar();
   const [rows, setRows] = useState([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [dataLogStorage, setDataLogStorage] = useState([]);
 
   useEffect(() => {
     let getDataStorage = JSON.parse(localStorage.getItem("users"));
@@ -36,12 +38,28 @@ function ListaUsuarios() {
     setPage(0);
   };
 
-  const handleDeleteUser = (e) => {
+  const handleDeleteUser = (cpf, nome) => {
     let getDataStorage = JSON.parse(localStorage.getItem("users"));
     for (let i = 0; i < getDataStorage.length; i++) {
-      if (getDataStorage[i].cpf === e) {
+      if (getDataStorage[i].cpf === cpf) {
         getDataStorage.splice(i, 1);
       }
+    }
+    if (localStorage.getItem("logs") === null) {
+      dataLogStorage.push({
+        acao: `Usuário ${nome} excluído.`,
+        data: dataAtualFormatada(),
+      });
+      let dataLogStringfy = JSON.stringify(dataLogStorage);
+      localStorage.setItem("logs", dataLogStringfy);
+    } else {
+      let getDataLogStorage = JSON.parse(localStorage.getItem("logs"));
+      getDataLogStorage.push({
+        acao: `Usuário ${nome} excluído.`,
+        data: dataAtualFormatada(),
+      });
+      let dataLogStringfy = JSON.stringify(getDataLogStorage);
+      localStorage.setItem("logs", dataLogStringfy);
     }
     setRows(getDataStorage);
     let dataStringfy = JSON.stringify(getDataStorage);
@@ -87,7 +105,7 @@ function ListaUsuarios() {
                 <TableCell align="center">{row.telefone}</TableCell>
                 <TableCell align="center">
                   <Tooltip title="Excluir" placement="left">
-                    <IconButton onClick={() => handleDeleteUser(row.cpf)}>
+                    <IconButton onClick={() => handleDeleteUser(row.cpf, row.nome)}>
                       <Delete />
                     </IconButton>
                   </Tooltip>
