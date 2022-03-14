@@ -26,7 +26,11 @@ function ListaUsuarios() {
 
   useEffect(() => {
     let getDataStorage = JSON.parse(localStorage.getItem("users"));
-    setRows(getDataStorage);
+    if (getDataStorage !== null) {
+      setRows(getDataStorage);
+    } else {
+      setRows([]);
+    }
   }, []);
 
   const handleChangePage = (event, newPage) => {
@@ -105,7 +109,9 @@ function ListaUsuarios() {
                 <TableCell align="center">{row.telefone}</TableCell>
                 <TableCell align="center">
                   <Tooltip title="Excluir" placement="left">
-                    <IconButton onClick={() => handleDeleteUser(row.cpf, row.nome)}>
+                    <IconButton
+                      onClick={() => handleDeleteUser(row.cpf, row.nome)}
+                    >
                       <Delete />
                     </IconButton>
                   </Tooltip>

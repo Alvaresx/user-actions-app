@@ -19,7 +19,11 @@ function Logs() {
 
   useEffect(() => {
     let getDataLogStorage = JSON.parse(localStorage.getItem("logs"));
-    setRows(getDataLogStorage);
+    if (getDataLogStorage !== null) {
+      setRows(getDataLogStorage);
+    } else {
+      setRows([]);
+    }
   }, []);
 
   const handleChangePage = (event, newPage) => {
