@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Box, Paper, Grid, TextField, Button, Typography } from "@mui/material";
 import { useSnackbar } from "notistack";
 import { dataAtualFormatada } from "../utils/DataFormatada";
+import { maskCPF, maskPhone } from "../utils/Masks";
 
 function CadastroUsuario() {
   const { enqueueSnackbar } = useSnackbar();
@@ -16,11 +17,11 @@ function CadastroUsuario() {
   };
 
   const handleChangeCpf = (e) => {
-    setCpf(e);
+    setCpf(maskCPF(e));
   };
 
   const handleChangeTelefone = (e) => {
-    setTelefone(e);
+    setTelefone(maskPhone(e));
   };
 
   const handleCadastrar = () => {
