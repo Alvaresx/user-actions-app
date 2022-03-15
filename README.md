@@ -1,4 +1,4 @@
-# ✏️ Cadastro de Usuários/Ações (PROJETO EM ANDAMENTO) ⚠️
+# ✏️ Cadastro de Usuários/Ações
 
 ## 📃 Sobre o projeto
 
@@ -8,9 +8,9 @@ O objetivo do projeto foi criar uma rotina de **cadastro de usuário**, permitin
 
 ### 🌟 Layout do projeto
 
-![image](https://user-images.githubusercontent.com/56731050/158403103-8f50ee4f-ccc6-45a8-b8f7-5a87fb6adcc3.png)
-![image](https://user-images.githubusercontent.com/56731050/158403228-22708d2b-a61e-4dd8-82db-0669fad72838.png)
-![image](https://user-images.githubusercontent.com/56731050/158403169-0393d9ba-ab99-40af-a445-9eaa8de6fe72.png)
+![image](https://user-images.githubusercontent.com/56731050/158475219-ef189fe2-afe4-46cc-a05c-8a418052c5aa.png)
+![image](https://user-images.githubusercontent.com/56731050/158475680-701ee0d9-3e27-4b2d-a838-0afddbf5e22b.png)
+![image](https://user-images.githubusercontent.com/56731050/158475731-da6adb6d-4f04-412e-a4d4-9028423cf6e3.png)
 
 ### ⚙️ Tecnologias utilizadas
 
@@ -28,7 +28,7 @@ O objetivo do projeto foi criar uma rotina de **cadastro de usuário**, permitin
 
 ### 🔎 Outras informações
 
-<!-- O projeto foi criado pensando na **responsividade**, possibilitando ao usuário a utilização da aplicação partindo de qualquer **dispositivo**! 📱💻 -->
+O projeto foi criado pensando na **responsividade**, possibilitando ao usuário a utilização da aplicação partindo de qualquer **dispositivo**! 📱💻
 
 Para executar o projeto, execute o comando `npm start`, acessando em http://localhost:3000 .
 
@@ -37,4 +37,4 @@ Para executar o projeto, execute o comando `npm start`, acessando em http://loca
 **Mariana Alvares da Silva Pinto** - _Desenvolvedora Front-end Júnior_ </br>
 ✉️ **E-mail**: mariana11areal@hotmail.com </br>
 📞 **Telefone/Whatsapp:** (24) 999987-7010 </br>
-<!-- 📌 **Link para acessar o projeto:** https://form-formik-yup.vercel.app/ -->
+📌 **Link para acessar o projeto:** https://user-actions-app.vercel.app/
