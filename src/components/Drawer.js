@@ -19,9 +19,11 @@ import {
   FindInPage,
   Menu,
 } from "@mui/icons-material";
+import { useLocation } from "react-router-dom";
 
 function Drawer() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const { pathname } = useLocation();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -55,7 +57,12 @@ function Drawer() {
             to={item.path}
             style={{ textDecoration: "none", color: "#000" }}
           >
-            <ListItem button key={item.text} onClick={item.onClick}>
+            <ListItem
+              button
+              selected={item.path === pathname}
+              key={item.text}
+              onClick={item.onClick}
+            >
               {item.icon && <ListItemIcon>{item.icon}</ListItemIcon>}
               <ListItemText primary={item.text} />
             </ListItem>

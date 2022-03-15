@@ -47,7 +47,7 @@ function CadastroUsuario() {
       let dataLogStringfy = JSON.stringify(getDataLogStorage);
       localStorage.setItem("logs", dataLogStringfy);
     }
-  }
+  };
 
   const handleCadastrar = (values, resetForm) => {
     let getDataStorage = JSON.parse(localStorage.getItem("users"));
