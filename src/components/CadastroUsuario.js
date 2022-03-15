@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Paper, Grid, TextField, Button, Typography } from "@mui/material";
+import { Box, Paper, Grid, Button, Typography, Toolbar } from "@mui/material";
 import { useSnackbar } from "notistack";
 import { dataAtualFormatada } from "../utils/DataFormatada";
 import { maskCPF, maskPhone } from "../utils/Masks";
@@ -86,16 +86,19 @@ function CadastroUsuario() {
         {({ setFieldValue }) => (
           <Form>
             <Box
+              component="main"
               sx={{
-                backgroundColor: "#f8fafc",
-                width: "100%",
-                height: "100vh",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
+                flexGrow: 1,
+                p: 3,
+                width: { md: `calc(100% - 250px)` },
+                margin: "0 auto",
               }}
             >
-              <Paper elevation={3} sx={{ padding: "24px", maxWidth: "70%" }}>
+              <Toolbar />
+              <Paper
+                elevation={3}
+                sx={{ padding: "24px", margin: "0 auto" }}
+              >
                 <Grid container spacing={3}>
                   <Grid item lg={12}>
                     <Typography variant="h6">Cadastro de Usuário</Typography>
@@ -104,10 +107,10 @@ function CadastroUsuario() {
                     </Typography>
                   </Grid>
 
-                  <Grid item lg={12} md={12}>
+                  <Grid item lg={12} md={12} sm={12} xs={12}>
                     <TextFieldWrapper name="nome" label="Nome" />
                   </Grid>
-                  <Grid item lg={6} md={6}>
+                  <Grid item lg={6} md={6} sm={12} xs={12}>
                     <TextFieldWrapper
                       name="cpf"
                       label="CPF"
@@ -117,7 +120,7 @@ function CadastroUsuario() {
                       inputProps={{ maxLength: 14 }}
                     />
                   </Grid>
-                  <Grid item lg={6} md={6}>
+                  <Grid item lg={6} md={6} sm={12} xs={12}>
                     <TextFieldWrapper
                       name="telefone"
                       label="Telefone"
@@ -133,6 +136,8 @@ function CadastroUsuario() {
                     item
                     lg={12}
                     md={12}
+                    sm={12}
+                    xs={12}
                     sx={{
                       display: "flex",
                       justifyContent: "center",

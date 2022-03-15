@@ -18,8 +18,9 @@ import {
   DialogContentText,
   DialogActions,
   Button,
+  Toolbar,
 } from "@mui/material";
-import { Delete, Sms } from "@mui/icons-material";
+import { Delete } from "@mui/icons-material";
 import { useSnackbar } from "notistack";
 import { dataAtualFormatada } from "../utils/DataFormatada";
 
@@ -93,16 +94,11 @@ function ListaUsuarios() {
   return (
     <>
       <Box
-        sx={{
-          backgroundColor: "#f8fafc",
-          width: "100%",
-          height: "100vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
+        component="main"
+        sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - 250px)` } }}
       >
-        <TableContainer component={Paper} sx={{ maxWidth: "70%" }}>
+        <Toolbar />
+        <TableContainer component={Paper} sx={{ margin: "0 auto" }}>
           <Table size="small" aria-label="a dense table">
             <TableHead>
               <TableRow>

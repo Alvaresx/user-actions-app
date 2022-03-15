@@ -10,6 +10,7 @@ import {
   TableFooter,
   TablePagination,
   Paper,
+  Toolbar,
 } from "@mui/material";
 
 function Logs() {
@@ -37,16 +38,11 @@ function Logs() {
 
   return (
     <Box
-      sx={{
-        backgroundColor: "#f8fafc",
-        width: "100%",
-        height: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
+      component="main"
+      sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - 250px)` } }}
     >
-      <TableContainer component={Paper} sx={{ maxWidth: "70%" }}>
+      <Toolbar />
+      <TableContainer component={Paper} sx={{ margin: "0 auto" }}>
         <Table size="small" aria-label="a dense table">
           <TableHead>
             <TableRow>
