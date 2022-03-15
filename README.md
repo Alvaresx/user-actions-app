@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+# ✏️ Cadastro de Usuários/Ações (PROJETO EM ANDAMENTO) ⚠️
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 📃 Sobre o projeto
 
-## Available Scripts
+Este projeto foi criado com o objetivo de colocar em **prática meus conhecimentos**. 💡 </br> Um dos motivos também foi aprender cada vez mais de acordo com que novos **desafios** foram aparecendo durante toda a **evolução** do projeto.
 
-In the project directory, you can run:
+O objetivo do projeto foi criar uma rotina de **cadastro de usuário**, permitindo a visualização dos usuários por meio de uma **tabela** onde pode ser realizada a **exclusão do usuário**. Uma tela de **log** também foi criada, mostrando **informações** do que foi feito e **data/hora** da realização de determinada ação. ✔️
 
-### `npm start`
+### 🌟 Layout do projeto
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![image](https://user-images.githubusercontent.com/56731050/158403103-8f50ee4f-ccc6-45a8-b8f7-5a87fb6adcc3.png)
+![image](https://user-images.githubusercontent.com/56731050/158403228-22708d2b-a61e-4dd8-82db-0669fad72838.png)
+![image](https://user-images.githubusercontent.com/56731050/158403169-0393d9ba-ab99-40af-a445-9eaa8de6fe72.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### ⚙️ Tecnologias utilizadas
 
-### `npm test`
+- ReactJS
+- HTML
+- CSS
+- Javascript
+- Material UI **(manipulação visual utilizando elementos para UI Design)**
+- Formik **(manipulação dos campos do formulário, tratativas de erro, dentre outras funcionalidades)**
+- Yup **(validação e manipulação de dados do formulário)**
+- cpf-cnpj-validator **(validação de CPF)**
+- Notistack **(apresentação de snackbar com informações para o usuário)**
+- React Router **(controle de roteamento das páginas da aplicação)**
+- localStorage **(utilizado para persistência de dados)**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 🔎 Outras informações
 
-### `npm run build`
+<!-- O projeto foi criado pensando na **responsividade**, possibilitando ao usuário a utilização da aplicação partindo de qualquer **dispositivo**! 📱💻 -->
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Para executar o projeto, execute o comando `npm start`, acessando em http://localhost:3000 .
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 🙋‍♀️ Autor
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Mariana Alvares da Silva Pinto** - _Desenvolvedora Front-end Júnior_ </br>
+✉️ **E-mail**: mariana11areal@hotmail.com </br>
+📞 **Telefone/Whatsapp:** (24) 999987-7010 </br>
+<!-- 📌 **Link para acessar o projeto:** https://form-formik-yup.vercel.app/ -->
