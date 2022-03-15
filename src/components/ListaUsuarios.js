@@ -29,7 +29,7 @@ function ListaUsuarios() {
   const [rows, setRows] = useState([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  const [dataLogStorage, setDataLogStorage] = useState([]);
+  const [dataLogStorage] = useState([]);
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
   const [cpf, setCpf] = useState("");
   const [nome, setNome] = useState("");
