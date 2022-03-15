@@ -30,6 +30,25 @@ function CadastroUsuario() {
     cpf: "",
   };
 
+  const handleAddLog = (values) => {
+    if (localStorage.getItem("logs") === null) {
+      dataLogStorage.push({
+        acao: `Usuário ${values.nome} cadastrado.`,
+        data: dataAtualFormatada(),
+      });
+      let dataLogStringfy = JSON.stringify(dataLogStorage);
+      localStorage.setItem("logs", dataLogStringfy);
+    } else {
+      let getDataLogStorage = JSON.parse(localStorage.getItem("logs"));
+      getDataLogStorage.push({
+        acao: `Usuário ${values.nome} cadastrado.`,
+        data: dataAtualFormatada(),
+      });
+      let dataLogStringfy = JSON.stringify(getDataLogStorage);
+      localStorage.setItem("logs", dataLogStringfy);
+    }
+  }
+
   const handleCadastrar = (values, resetForm) => {
     let getDataStorage = JSON.parse(localStorage.getItem("users"));
     let found;
@@ -48,6 +67,7 @@ function CadastroUsuario() {
         variant: "success",
         anchorOrigin: { horizontal: "right", vertical: "top" },
       });
+      handleAddLog(values);
       resetForm();
     } else if (found !== undefined) {
       enqueueSnackbar("CPF já cadastrado. Tente novamente!", {
@@ -66,23 +86,8 @@ function CadastroUsuario() {
         variant: "success",
         anchorOrigin: { horizontal: "right", vertical: "top" },
       });
+      handleAddLog(values);
       resetForm();
-    }
-    if (localStorage.getItem("logs") === null) {
-      dataLogStorage.push({
-        acao: `Usuário ${values.nome} cadastrado.`,
-        data: dataAtualFormatada(),
-      });
-      let dataLogStringfy = JSON.stringify(dataLogStorage);
-      localStorage.setItem("logs", dataLogStringfy);
-    } else {
-      let getDataLogStorage = JSON.parse(localStorage.getItem("logs"));
-      getDataLogStorage.push({
-        acao: `Usuário ${values.nome} cadastrado.`,
-        data: dataAtualFormatada(),
-      });
-      let dataLogStringfy = JSON.stringify(getDataLogStorage);
-      localStorage.setItem("logs", dataLogStringfy);
     }
     setDataStorage([]);
     setDataLogStorage([]);
