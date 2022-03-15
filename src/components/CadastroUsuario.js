@@ -30,8 +30,13 @@ function CadastroUsuario() {
     cpf: "",
   };
 
-  const handleCadastrar = (values) => {
-    if (localStorage.getItem("users") === null) {
+  const handleCadastrar = (values, resetForm) => {
+    let getDataStorage = JSON.parse(localStorage.getItem("users"));
+    let found;
+    if (getDataStorage !== null) {
+      found = getDataStorage.find((element) => element.cpf === values.cpf);
+    }
+    if (getDataStorage === null) {
       dataStorage.push({
         nome: values.nome,
         cpf: values.cpf,
@@ -39,8 +44,17 @@ function CadastroUsuario() {
       });
       let dataStringfy = JSON.stringify(dataStorage);
       localStorage.setItem("users", dataStringfy);
+      enqueueSnackbar("Cadastro realizado com sucesso!", {
+        variant: "success",
+        anchorOrigin: { horizontal: "right", vertical: "top" },
+      });
+      resetForm();
+    } else if (found !== undefined) {
+      enqueueSnackbar("CPF já cadastrado. Tente novamente!", {
+        variant: "error",
+        anchorOrigin: { horizontal: "right", vertical: "top" },
+      });
     } else {
-      let getDataStorage = JSON.parse(localStorage.getItem("users"));
       getDataStorage.push({
         nome: values.nome,
         cpf: values.cpf,
@@ -48,6 +62,11 @@ function CadastroUsuario() {
       });
       let dataStringfy = JSON.stringify(getDataStorage);
       localStorage.setItem("users", dataStringfy);
+      enqueueSnackbar("Cadastro realizado com sucesso!", {
+        variant: "success",
+        anchorOrigin: { horizontal: "right", vertical: "top" },
+      });
+      resetForm();
     }
     if (localStorage.getItem("logs") === null) {
       dataLogStorage.push({
@@ -65,10 +84,6 @@ function CadastroUsuario() {
       let dataLogStringfy = JSON.stringify(getDataLogStorage);
       localStorage.setItem("logs", dataLogStringfy);
     }
-    enqueueSnackbar("Cadastro realizado com sucesso!", {
-      variant: "success",
-      anchorOrigin: { horizontal: "right", vertical: "top" },
-    });
     setDataStorage([]);
     setDataLogStorage([]);
   };
@@ -79,8 +94,7 @@ function CadastroUsuario() {
         initialValues={values}
         validationSchema={validationSchema}
         onSubmit={(values, { resetForm }) => {
-          handleCadastrar(values);
-          resetForm();
+          handleCadastrar(values, resetForm);
         }}
       >
         {({ setFieldValue }) => (
@@ -95,10 +109,7 @@ function CadastroUsuario() {
               }}
             >
               <Toolbar />
-              <Paper
-                elevation={3}
-                sx={{ padding: "24px", margin: "0 auto" }}
-              >
+              <Paper elevation={3} sx={{ padding: "24px", margin: "0 auto" }}>
                 <Grid container spacing={3}>
                   <Grid item lg={12}>
                     <Typography variant="h6">Cadastro de Usuário</Typography>
